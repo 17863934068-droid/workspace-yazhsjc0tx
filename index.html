@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>小红书 - 搜索</title>
+  <link rel="stylesheet" href="fonts/nsc.css?v=1">
+  <link rel="stylesheet" href="styles.css?v=47">
+</head>
+<body>
+
+  <div class="stage">
+    <div class="phone">
+
+      <!-- 机身侧键 -->
+      <div class="pbtn b-action"></div>
+      <div class="pbtn b-volu"></div>
+      <div class="pbtn b-vold"></div>
+      <div class="pbtn b-power"></div>
+
+      <div class="screen dark">
+
+        <!-- 灵动岛 -->
+        <div class="island"><span class="cam"></span></div>
+
+        <!-- 状态栏 -->
+        <div class="statusbar">
+          <span class="sb-time" id="sbTime">9:41</span>
+          <span class="sb-icons">
+            <svg viewBox="0 0 18 12" class="ic-signal"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".35"/></svg>
+            <svg viewBox="0 0 16 13" class="ic-wifi"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M6.09 9.09a2.7 2.7 0 0 1 3.82 0"/><path d="M4.61 7.61a4.8 4.8 0 0 1 6.79 0"/><path d="M3.12 6.12a6.9 6.9 0 0 1 9.76 0"/></g><circle cx="8" cy="11" r="1.5"/></svg>
+            <svg viewBox="0 0 27 13" class="ic-batt"><rect x=".5" y=".5" width="22" height="12" rx="3.5" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="15" height="9" rx="2"/><path d="M24 4.5v4c1.2-.4 1.8-1.1 1.8-2s-.6-1.6-1.8-2z" opacity=".4"/></svg>
+          </span>
+        </div>
+
+        <!-- 应用区域 -->
+        <div class="app">
+
+          <!-- 搜索中间页 -->
+          <div class="page" id="pageSearch">
+
+            <div class="sbar">
+              <button class="sback" aria-label="返回">
+                <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="sinput">
+                <input id="searchInput" type="text" value="云南雨季自由行" autocomplete="off" enterkeyhint="search">
+                <button class="sclear" id="searchClear" aria-label="清除">
+                  <svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+                </button>
+                <span class="sdiv"></span>
+                <button class="sgo" id="btnSearch">搜索</button>
+              </div>
+            </div>
+
+            <div class="sbody">
+              <div class="sec-h">
+                <span>搜索历史</span>
+                <span class="ic">
+                  <svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2m3 0v13a1 1 0 01-1 1H7a1 1 0 01-1-1V7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+              <div class="chips" id="histChips">
+                <span class="chip">云南雨季自由行</span>
+                <span class="chip">云南最新班车时刻</span>
+                <span class="chip">室内绿植养护</span>
+                <span class="chip">大理民宿推荐</span>
+                <span class="chip">徒步装备清单</span>
+              </div>
+
+              <div class="sec-h">
+                <span>猜你想搜</span>
+                <span class="ic">
+                  <svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 10-2.34 5.66M20 5v6h-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+              <div class="chips">
+                <span class="chip">胶片漏光美学</span>
+                <span class="chip">街头构图灵感</span>
+                <span class="chip">慢门追焦教学</span>
+                <span class="chip">夜景光轨参数</span>
+                <span class="chip">ICM油画感拍法</span>
+                <span class="chip">棱镜人像光效</span>
+                <span class="chip">胶片色调配方</span>
+                <span class="chip">反射构图机位</span>
+                <span class="chip">室内绿植养护</span>
+                <span class="chip">云南雨季自由行</span>
+                <span class="chip">多肉拼盆</span>
+                <span class="chip">洱海环湖路线</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 搜索结果页（阶段1） -->
+          <div class="page" id="pageResults">
+            <div class="sbar">
+              <button class="sback" id="resBack" aria-label="返回">
+                <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="sinput resbar" id="resBar">
+                <span class="resq" id="resQuery">摄影审美</span>
+                <button class="resclear" id="resClear" aria-label="清除">
+                  <svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+                </button>
+                <span class="sdiv"></span>
+                <button class="resgo" id="resGo">搜索</button>
+              </div>
+            </div>
+
+            <div class="filters">
+              <span class="f on">全部<svg class="fico" viewBox="0 0 24 24"><path d="M4 6h16l-6.2 7.3V20l-3.6-2.2v-4.5L4 6z" fill="currentColor"/></svg></span>
+              <span class="f">用户</span>
+              <span class="f">商品</span>
+              <span class="f">图片</span>
+              
+            </div>
+
+            <div class="wfwrap" id="wfWrap">
+              <div class="wfcols" id="wfCols">
+                <div class="wfcol" id="wfColA"></div>
+                <div class="wfcol" id="wfColB"></div>
+              </div>
+              <div class="wfempty" id="wfEmpty">
+                <svg class="il" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="18" y="12" width="46" height="62" rx="7"/>
+                  <line x1="29" y1="30" x2="53" y2="30"/>
+                  <line x1="29" y1="42" x2="53" y2="42"/>
+                  <line x1="29" y1="54" x2="43" y2="54"/>
+                  <circle cx="63" cy="60" r="15" fill="#fff"/>
+                  <line x1="74.5" y1="71.5" x2="86" y2="83"/>
+                </svg>
+                <h4>该搜索不在 Demo 模拟范围</h4>
+                <p>当前仅预设三个场景：云南雨季自由行、云南最新班车时刻、室内绿植养护</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 笔记详情页（阶段4） -->
+          <div class="page" id="pageDetail">
+            <div class="dt-nav">
+              <button class="dt-back" id="dtBack" aria-label="返回">
+                <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="dt-navmid">
+                <span class="dt-av" id="dtAv"></span>
+                <span class="dt-name" id="dtName"></span>
+                <button class="dt-follow" id="dtFollow">关注</button>
+              </div>
+              <button class="dt-share" id="dtShareTop" aria-label="分享">
+                <svg viewBox="0 0 24 24"><path d="M18 11v7.2c0 1-.8 1.8-1.8 1.8H5.8c-1 0-1.8-.8-1.8-1.8V7.8C4 6.8 4.8 6 5.8 6H13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M15.5 3.5L20.5 8.5 15.5 13.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.5 8.5h-6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            <div class="dt-scroll" id="dtScroll">
+              <div class="dt-carousel" id="dtCarousel">
+                <div class="dt-track" id="dtTrack"></div>
+                <div class="dt-dots" id="dtDots"></div>
+              </div>
+              <div class="dt-main">
+                <h1 class="dt-h1" id="dtTitle"></h1>
+                <div class="dt-body" id="dtBody"></div>
+                <div class="dt-date" id="dtDate"></div>
+                <div class="dt-ch" id="dtChHead"></div>
+                <div class="dt-comments" id="dtComments"></div>
+                <div class="dt-end">没有更多评论了</div>
+              </div>
+            </div>
+            <div class="dt-bar">
+              <button class="dt-say" id="dtSay" aria-label="去评论">
+                <svg viewBox="0 0 24 24"><path d="M4 20l1.2-4.2L15.8 5.2a2 2 0 012.8 0l.2.2a2 2 0 010 2.8L8.2 18.8 4 20z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M13.5 7.5l3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                <span>说点什么…</span>
+              </button>
+              <div class="dt-acts">
+                <button class="dt-act" id="dtLike">
+                  <svg viewBox="0 0 24 24"><path d="M12 20.3s-7.2-4.7-9.3-8.7C1.1 8.6 2.5 5.6 5.4 5c1.9-.4 3.7.5 4.8 2 1.1-1.5 2.9-2.4 4.8-2 2.9.6 4.3 3.6 2.7 6.6-2.1 4-9.5 8.7-9.5 8.7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                  <b id="dtLikeN"></b>
+                </button>
+                <button class="dt-act" id="dtStar">
+                  <svg viewBox="0 0 24 24"><path d="M12 2.8l2.9 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.8 3 1.1-6.3L2.7 9.5l6.4-.9z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                  <b id="dtStarN"></b>
+                </button>
+                <button class="dt-act" id="dtCmt">
+                  <svg viewBox="0 0 24 24"><path d="M12 4.5c-4.6 0-8.2 3.1-8.2 7 0 2.2 1.2 4.1 3 5.4-.2 1-.6 2-1.4 2.8 1.6-.1 3-.8 4-1.7.8.2 1.7.3 2.6.3 4.6 0 8.2-3.1 8.2-6.8s-3.6-7-8.2-7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                  <b id="dtCmtN"></b>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Echo Bubble（阶段2：磨砂星标悬浮入口） -->
+          <div class="ebubble" id="eBubble" aria-label="相关收藏">
+            <div class="eb-fan" id="ebFan">
+              <img class="eb-ph" alt="" draggable="false">
+              <img class="eb-ph" alt="" draggable="false">
+              <img class="eb-ph" alt="" draggable="false">
+            </div>
+            <div class="eb-txt" id="ebTxt">
+              <span class="eb-num"><b id="ebNum">4</b>篇</span>
+              <span class="eb-sub">相关收藏</span>
+            </div>
+            <div class="eb-ball">
+              <svg class="eb-star" viewBox="0 0 24 24"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.55 1.1 6.4L12 17.4l-5.8 3 1.1-6.4L2.6 9.45l6.5-.95z"/></svg>
+            </div>
+          </div>
+
+          <!-- 收藏半屏浏览层（阶段2：轻占位，阶段3换叠卡/网格） -->
+          <div class="eshield" id="eShield"></div>
+          <div class="esheet" id="eSheet">
+            <div class="es-grab" id="esGrab"><span class="es-bar"></span></div>
+            <div class="es-head" id="esHead">
+              <div class="es-hleft">
+                <div class="es-title">相关收藏</div>
+              </div>
+              <button class="es-hide" id="esHide">本次隐藏</button>
+              <div class="es-modes">
+                <button class="es-mode on" id="modeStack" aria-label="叠卡浏览">
+                  <svg viewBox="0 0 24 24"><rect x="8.5" y="4.5" width="12" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="3.5" y="7.5" width="12" height="15" rx="2.5" fill="#fff" stroke="currentColor" stroke-width="1.7"/></svg>
+                </button>
+                <button class="es-mode" id="modeGrid" aria-label="网格浏览">
+                  <svg viewBox="0 0 24 24"><rect x="4" y="4" width="7.2" height="7.2" rx="1.8" fill="currentColor"/><rect x="12.8" y="4" width="7.2" height="7.2" rx="1.8" fill="currentColor"/><rect x="4" y="12.8" width="7.2" height="7.2" rx="1.8" fill="currentColor"/><rect x="12.8" y="12.8" width="7.2" height="7.2" rx="1.8" fill="currentColor"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="es-body" id="esBody"></div>
+          </div>
+
+          <!-- 底部 Tab 栏 -->
+
+          <!-- Home Indicator -->
+          <div class="homebar"></div>
+
+        </div><!-- /app -->
+      </div><!-- /screen -->
+    </div><!-- /phone -->
+  </div><!-- /stage -->
+
+  <script src="data.js?v=11"></script>
+  <script src="app.js?v=21"></script>
+</body>
+</html>
